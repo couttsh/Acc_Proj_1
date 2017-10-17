@@ -2,6 +2,11 @@ String message = "HELLO";
 
 int numchar = message.length();
 
+int SPEED_CONTROL = 0; //create speed control variable
+int POT = A0; //create speed sensor input
+int BLINK_ADJ = 0; //controls blink between LEDs, 1/5 SPEED_CONTROL
+int EDGE_DELAY = 0; //controls delay for end of motion
+
 //int letter[26][5] =
 //
 //                {{1, 6, 26, 6, 1},   //A
@@ -102,7 +107,7 @@ void setup() {
 
 void loop() {
   
-  int SPEED_CONTROL = analogRead(POT); //get input from sensor (max default is 1023 ~= 1s delay or 1Hz, min is 0)
+  int SPEED_CONTROL = (analogRead(POT) / 4); //get input from sensor (max default is 250 ~= .25s delay, min is 0)
   int BLINK_ADJ = (SPEED_CONTROL / 5); //set the blink adjust between "pixels" or LEDs to be 1/5 that of SPEED_CONTROL (max is .2s delay or 5Hz)
   //test output with direct delay of SPEED_CONTROL
   EDGE_DELAY = (SPEED_CONTROL * 10); //creates a delay 10 times that of the input
