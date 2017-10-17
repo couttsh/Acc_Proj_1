@@ -63,6 +63,7 @@ int EDGE_DELAY = 0; //controls delay for end of motion
 //
 //        };
 
+/*Define each letter as an array of ints*/
 int A[5] = {1, 6, 26, 6, 1};
 int B[5] = {31, 21, 21, 10, 0};
 int C[5] = {14, 17, 17, 10, 0};
@@ -93,10 +94,10 @@ int Z[5] = {19, 21, 21, 25, 0};
 void sendChar(int *character){
   int i;
     for (i = 0; i < 5; i++){
-    PORTB = character[i];
-    delay(BLINK_ADJ);
+    PORTB = character[i]; //Take in the array of ints from the loop and send that to PORTB
+    delay(BLINK_ADJ); //delay the blinking based on the potentiometer 
   }
-  PORTB = 0x0;
+  PORTB = 0x0; //turn off all LEDs
   delay(SPEED_CONTROL);
 }
 
@@ -116,7 +117,7 @@ void loop() {
   int i;
   int j;
   DDRB = 0xFF;
-  // put your main code here, to run repeatedly:
+  // loop through the length of the string and send each character to the board
     for (i = 0; i < numchar; i++){
        if (message.charAt(i) == 'A'){
         sendChar(A);
