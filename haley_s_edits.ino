@@ -117,7 +117,7 @@ void loop() {
   int i;
   int j;
   DDRB = 0xFF;
-  // loop through the length of the string and send each character to the board
+  // loop through the length of the string and send each character to the LEDs
     for (i = 0; i < numchar; i++){
        if (message.charAt(i) == 'A'){
         sendChar(A);
