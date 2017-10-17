@@ -102,7 +102,6 @@ void sendChar(int *character){
 }
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(A0, INPUT); //set A0 to input (not really necessary as it is default) 
 }
 
